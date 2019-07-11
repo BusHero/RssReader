@@ -1,0 +1,49 @@
+﻿<Window x:Class="RSSReader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0"
+              Grid.Row="1"
+              Margin="0,0,0,0"
+              Background="Pink">
+            <TreeView Name="FeedsSources" Grid.Column="0" Background="Green" SelectedItemChanged="OnChannelChanged">
+                <TreeViewItem Name="MySources" Header="My Sources" IsExpanded="True" />
+                <TreeViewItem Name="AddSourcesButton" Header="Add sources" />
+            </TreeView>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <StackPanel Margin="22.5,30,1309,30.04" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="10,0,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock HorizontalAlignment="Right" Name="NewsMakerTextBlock" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="19.96" FrameworkElement.FlowDirection="RightToLeft"/>
+                <Button Content="Remove from my sources" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144"/>
+            </StackPanel>
+            <ToggleButton Content="ToggleButton" HorizontalAlignment="Left" Margin="1393,30,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid 
+              Grid.Column="1"
+              Grid.Row="1">
+            <ScrollViewer 
+                          VerticalAlignment="Top">
+                <ItemsControl ItemsSource="{Binding Items}"
+                          
+                          Width="860" Padding="0,80,0,0"  />
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
